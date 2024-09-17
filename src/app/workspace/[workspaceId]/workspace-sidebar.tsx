@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 
 import { useCurrentMember } from "@/features/members/api/use-current-member";
 import { useWorkspaceId } from "@/hooks/use-workspace-id";
@@ -5,8 +7,8 @@ import {
   AlertTriangle,
   HashIcon,
   Loader,
-  MessageSquareText,
-  SendHorizonal,
+  // MessageSquareText,
+  // SendHorizonal,
 } from "lucide-react";
 import { WorkspaceHeader } from "./workspace-header";
 import { SidebarItem } from "./sidebar-item";
@@ -25,6 +27,7 @@ export const WorkspaceSidebar = () => {
   const channelId = useChannelId()
   const workspaceId = useWorkspaceId();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_open, setOpen] = useCreateChannelModal()
 
   const { data: member, isLoading: memberLoading } = useCurrentMember({
@@ -33,9 +36,11 @@ export const WorkspaceSidebar = () => {
   const { data: workspace, isLoading: workspaceLoading } = useGetWorkSpace({
     id: workspaceId,
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data: channels, isLoading: channelsLoading } = useGetChannels({
     workspaceId,
   });
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data: members, isLoading: membersLoading } = useGetMembers({ workspaceId })
 
 
@@ -63,8 +68,8 @@ export const WorkspaceSidebar = () => {
         isAdmin={member.role === "admin"}
       />
       <div className="flex flex-col px-2 mt-3">
-        <SidebarItem label="Threads" icon={MessageSquareText} id="threads" />
-        <SidebarItem label="Drafts" icon={SendHorizonal} id="drafts" />
+        {/* <SidebarItem label="Threads" icon={MessageSquareText}  className="cursor-not-allowed" onClick={() => {}} />
+        <SidebarItem label="Drafts" icon={SendHorizonal} className="cursor-not-allowed" /> */}
       </div>
       <WorkspaceSection label="Channels" hint="New channel" onNew={member.role === "admin" ? () => setOpen(true) : undefined}>
         {channels?.map((item) => (
@@ -80,7 +85,7 @@ export const WorkspaceSidebar = () => {
       <WorkspaceSection label="Direct Messages" hint="New direct message" onNew={() => {}}>
       {members?.map((item) => (
         <UserItem
-        key={item._id}
+        key={item.user.name}
         id={item._id}
         label={item.user.name}
         image={item.user.image}

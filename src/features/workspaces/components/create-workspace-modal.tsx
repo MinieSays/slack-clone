@@ -20,7 +20,7 @@ export const CreateWorkspaceModal = () => {
   const [name, setName] = useState("");
   const router = useRouter();
 
-  const { mutate, isPending, isError, isSuccess, data, error } =
+  const { mutate, isPending } =
     useCreateWorkspace();
 
   const handleClose = () => {

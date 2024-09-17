@@ -1,11 +1,3 @@
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
 
 import { UserButton } from "@/features/auth/user-button";
 import { WorkspaceSwitcher } from "./workspace-switcher";
