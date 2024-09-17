@@ -15,7 +15,9 @@ import { toast } from "sonner";
 import { useGetMessages } from "../api/use-get-messages";
 import { differenceInMinutes, format, isToday, isYesterday } from "date-fns";
 
-const Editor = dynamic(() => import("@/components/editor"), { srr: false });
+
+
+const Editor = dynamic(() => import("@/components/editor"));
 
 const TIME_THRESHHOLD = 5;
 
@@ -83,7 +85,7 @@ export const Thread = ({ messageId, onClose }: ThreadPops) => {
       };
 
       if (image) {
-        const url = await generateUploadUrl({}, { throwError: true });
+        const url = await generateUploadUrl({});
 
         if (!url) {
           throw new Error("Url not found");
@@ -104,7 +106,7 @@ export const Thread = ({ messageId, onClose }: ThreadPops) => {
         values.image = storageId;
       }
 
-      await createMessage(values, { throwError: true });
+      await createMessage(values);
       setEditorKey((prevKey) => prevKey + 1);
     } catch {
       toast.error("Failed to send message");
