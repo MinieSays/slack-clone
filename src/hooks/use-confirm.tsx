@@ -58,7 +58,7 @@ const ConfirmDialog = () => (
   </Dialog>
 )
   
-
+ // @ts-expect-error confirm dialogue 
 return [ConfirmDialog, confirm]
 
 }
