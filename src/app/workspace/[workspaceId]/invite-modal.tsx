@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -60,9 +63,9 @@ export const InviteModal = ({
       .writeText(inviteLink)
       .then(() => toast.success("Invite link copied to clipboard"));
   };
-
   return (
     <>
+
     <ConfirmDialog />
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent>

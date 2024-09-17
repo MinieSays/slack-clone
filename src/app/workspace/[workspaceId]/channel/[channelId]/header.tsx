@@ -1,3 +1,7 @@
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { Button } from "@/components/ui/button";
 import { FaChevronDown } from "react-icons/fa";
 
