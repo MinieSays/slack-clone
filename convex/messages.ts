@@ -2,7 +2,6 @@ import { v } from "convex/values";
 import { mutation, query, QueryCtx } from "./_generated/server";
 import { getAuthUserId } from "@convex-dev/auth/server";
 import { Doc, Id } from "./_generated/dataModel";
-import { timeStamp } from "console";
 import { paginationOptsValidator } from "convex/server";
 
 const populateThread = async (ctx: QueryCtx, messageId: Id<"messages">) => {
@@ -18,6 +17,7 @@ const populateThread = async (ctx: QueryCtx, messageId: Id<"messages">) => {
             count: 0,
             image: undefined,
             timeStamp: 0,
+            name: "",
         }
     }
 
@@ -28,7 +28,8 @@ const populateThread = async (ctx: QueryCtx, messageId: Id<"messages">) => {
         return {
             count: messages.length,
             image: undefined,
-            timestamp: 0
+            timestamp: 0,
+            name: "",
         }
     }
 
@@ -37,7 +38,8 @@ const populateThread = async (ctx: QueryCtx, messageId: Id<"messages">) => {
     return {
         count: messages.length,
         image: lastMessageUser?.image,
-        timeStamp: lastMessage._creationTime
+        timeStamp: lastMessage._creationTime,
+        name: lastMessageUser?.name,
     }
 }
 
@@ -64,7 +66,7 @@ const getMember = async (
   return ctx.db
     .query("members")
     .withIndex("by_workspace_id_user_id", (q) =>
-      q.eq("workspaceId", workspaceId).eq("userId", userId)
+      q.eq("workspaceId", workspaceId).eq("userId", userId),
     )
     .unique();
 };
@@ -306,6 +308,7 @@ export const get = query({
                   reactions: reactionsWithoutMemberIdProperty,
                   threadCount: thread.count,
                   threadImage: thread.image,
+                  threadName: thread.name,
                   threadTimestamp: thread.timestamp
                 }
               })
