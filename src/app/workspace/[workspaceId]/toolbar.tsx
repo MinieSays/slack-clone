@@ -5,7 +5,6 @@ import { Info, Search } from "lucide-react";
 import { useState } from "react";
 
 import {
-  Command,
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -13,11 +12,9 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-  CommandShortcut,
 } from "@/components/ui/command";
 import { useGetChannels } from "@/features/channels/api/use-get-channels";
 import { useGetMembers } from "@/features/members/api/use-get-members";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export const Toolbar = () => {
@@ -61,6 +58,7 @@ export const Toolbar = () => {
             <CommandGroup heading="Channels">
               {channels?.map((channel) => (
                 <CommandItem
+                key={channel._id}
                   onSelect={() => onChannelClick(channel._id)}
                 >
                   {channel.name}
@@ -70,7 +68,9 @@ export const Toolbar = () => {
             <CommandSeparator />
             <CommandGroup heading="Members">
               {members?.map((member) => (
-                <CommandItem onSelect={() => onMemberClick(member._id)}>
+                <CommandItem
+                key={member._id}
+                onSelect={() => onMemberClick(member._id)}>
                   {member.user.name}
                 </CommandItem>
               ))}

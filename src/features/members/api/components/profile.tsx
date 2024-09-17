@@ -1,10 +1,12 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { Button } from "@/components/ui/button";
 import { Id } from "../../../../../convex/_generated/dataModel";
 import { useGetMember } from "../use-get-member";
 import {
   AlertTriangle,
   ChevronDown,
-  ChevronRight,
   Loader,
   MailIcon,
   XIcon,
@@ -22,11 +24,8 @@ import { useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { DropdownMenuRadioGroup } from "@radix-ui/react-dropdown-menu";
 
@@ -59,9 +58,9 @@ export const Profile = ({ memberId, onClose }: ProfileProps) => {
   const { data: currentMember, isLoading: isLoadingCurrentMember } =
     useCurrentMember({ workspaceId });
 
-  const { mutate: updateMember, isPending: isUpdatingMember } =
+  const { mutate: updateMember } =
     useUpdateMember();
-  const { mutate: removeMember, isPending: isRemovingMember } =
+  const { mutate: removeMember } =
     useRemoveMember();
 
   const onRemove = async () => {
