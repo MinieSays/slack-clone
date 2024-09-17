@@ -1,3 +1,4 @@
+
 import { useCallback, useMemo, useState } from "react";
 import { useMutation } from "convex/react";
 import { Id } from "../../../../convex/_generated/dataModel";
@@ -35,7 +36,7 @@ export const useCreateOrGetConversation = () => {
         setData(null);
         setError(null);
         setStatus("pending");
-
+/* @ts-expect-error defined */
         const response = await mutation(values);
         options?.onSuccess?.(response);
         return response;

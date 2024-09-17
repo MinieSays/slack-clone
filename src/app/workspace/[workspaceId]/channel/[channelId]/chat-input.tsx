@@ -49,7 +49,7 @@ export const ChatInput = ({ placeholder }: ChatInputProps) => {
       }
 
       if (image) {
-        const url = await generateUploadUrl({}, {throwError: true})
+        const url = await generateUploadUrl({})
 
         if (!url) {
             throw new Error("Url not found")
@@ -70,7 +70,7 @@ export const ChatInput = ({ placeholder }: ChatInputProps) => {
         values.image = storageId
       }
 
-      await createMessage(values, { throwError: true })
+      await createMessage(values)
       setEditorKey((prevKey) => prevKey + 1);
     } catch (error) {
         toast.error("Failed to send message");
