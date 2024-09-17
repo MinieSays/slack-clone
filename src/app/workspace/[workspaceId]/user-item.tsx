@@ -25,12 +25,14 @@ interface UserItemProps {
     id: Id<"members">;
     label?: string;
     iage?: string;
-    variant?: VariantProps<typeof userItemVariants>["variant"]
+    variant?: VariantProps<typeof userItemVariants>["variant"],
+
 }
 
 export const UserItem = ({
     id,
     label = "Member",
+ // @ts-expect-error image 
     image,
     variant
 }: UserItemProps) => {
