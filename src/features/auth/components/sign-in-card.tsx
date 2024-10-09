@@ -49,11 +49,11 @@ export const SignInCard = ({setState}: SignInCardProps) => {
   }
 
   return (
-    <Card className="w-full h-full p-8">
+    <Card className="w-full h-full p-6">
       <CardHeader className="px-0 pt-0">
         <CardTitle>Login to Continue</CardTitle>
         <CardDescription>
-          User your email or another service to continue
+          User your email or another service to continue or guests can use the above login credentials. You can also watch the video below.
         </CardDescription>
       </CardHeader>
         {
